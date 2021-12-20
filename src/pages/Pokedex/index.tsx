@@ -17,8 +17,7 @@ import {
   StyledButton,
   TextWrapper,
   Text,
-  CarouselH,
-  CarouselP,
+  ButtonText,
 } from "./styles";
 
 import Details from "../Details/index";
@@ -146,7 +145,7 @@ const Pokedex: React.FC = () => {
                     <h3>{item.types}</h3>
                     <Link to="/details">
                       <StyledButton onClick={() => setShow(true)}>
-                        Details
+                        <ButtonText>Details</ButtonText>
                       </StyledButton>
                     </Link>
                   </Card>

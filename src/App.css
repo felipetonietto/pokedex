@@ -12,7 +12,8 @@
   font-family: "Pokemon Solid", sans-serif;
   color: #ffcb05;
   text-shadow: 4px 4px #2a75bb;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  margin-top: 2px;
 }
 
 .lds-ellipsis {

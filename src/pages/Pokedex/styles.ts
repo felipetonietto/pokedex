@@ -78,3 +78,9 @@ export const CarouselP = styled.p`
   font-weight: bold;
   font-size: 30px;
 `;
+
+export const ButtonText = styled.text`
+  color: #3c5aa6;
+  weight: 700;
+  /* font-size: calc(40px + 2vmin); */
+`;
