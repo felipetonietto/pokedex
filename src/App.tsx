@@ -28,9 +28,8 @@ function App() {
         </header>
 
         <Routes>
-          <Route path="/" element={<Pokedex />}/>
-          <Route path="/details"
-          element={<Details /> }/>
+          <Route path="/" element={<Pokedex />} />
+          <Route path="/details/:id" element={<Details />} />
         </Routes>
       </div>
     </Router>

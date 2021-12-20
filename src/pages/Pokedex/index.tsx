@@ -49,7 +49,6 @@ import Loader from "../../components/Loader/Loader";
 
 const Pokedex: React.FC = () => {
   const [pokemon, setPokemon]: any[] = useState({});
-  const [show, setShow] = useState(false);
   const [search, setSearch] = useState("pikachu");
   const [loading, setLoading] = useState(false);
   const [mobile, setMobile] = useState(false);
@@ -139,12 +138,11 @@ const Pokedex: React.FC = () => {
             pokemon?.data?.slice(0, 12).map((item: any, index: number) => {
               return (
                 <div>
-                  {/* <Details pokemon={item} show={show}></Details> */}
                   <Card header={item.name} headerRightComponent={item.id}>
                     <img src={item.images.small} alt="pokemon card" />
                     <h3>{item.types}</h3>
-                    <Link to="/details">
-                      <StyledButton onClick={() => setShow(true)}>
+                    <Link to={`/details/${item.id}`}>
+                      <StyledButton>
                         <ButtonText>Details</ButtonText>
                       </StyledButton>
                     </Link>

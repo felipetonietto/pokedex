@@ -4,8 +4,6 @@ import Modal from "../../../components/Modal/index";
 
 import { FooterText, LineWapper, Info, Name, TitleText } from "./styles";
 
-// import { } from "./styles";
-
 const DetailsModal: React.FC<{
   isOpen: boolean;
   onClose: Function;
@@ -14,6 +12,8 @@ const DetailsModal: React.FC<{
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
+
+  let last = pokemon?.attacks?.slice(-1)[0];
 
   return (
     <>
@@ -35,13 +35,14 @@ const DetailsModal: React.FC<{
 
                   <LineWapper>
                     <Info>Cost: </Info>
-                    <Name>{item.cost.join(', ')}</Name>
+                    <Name>{item.cost.join(", ")}</Name>
                   </LineWapper>
 
                   <LineWapper>
                     <Info>Description: </Info>
                     <Name>{item.text}</Name>
                   </LineWapper>
+                  {item !== last && <hr></hr>}
                 </>
               );
             })}

@@ -58,12 +58,12 @@ export const ButtonText = styled.text`
 `;
 
 export const Name = styled.h2`
-  color: black;
+  color: #3c5aa6;
 `;
 
 export const Info = styled.h3`
   margin-right: 8px;
-  color: black;
+  color: #c7a008;
 `;
 
 export const LineWapper = styled.div`

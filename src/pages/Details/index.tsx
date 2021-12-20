@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+import api from "../../services/api";
 
 import useModal from "../../hooks/useModal";
 
 import { Col, Row } from "react-bootstrap";
+
+import Loader from "../../components/Loader/Loader";
 
 import Modal from "./DetailsModal/index";
 import {
@@ -17,8 +21,30 @@ import {
   ButtonText,
 } from "./styles";
 
-const Details: React.FC<any> = ({ pokemon, show }) => {
+const Details: React.FC<any> = ({ show }: { show: boolean }) => {
+  const [pokemon, setPokemon]: any[] = useState({});
+  const [loading, setLoading] = useState(false);
   const detailsModal = useModal();
+  let { id } = useParams();
+
+  async function getCards(event: any = null) {
+    event && event.preventDefault();
+    setLoading(true);
+    try {
+      const { data } = await api.get(`/cards?q=id:${id}`);
+      setPokemon(data.data[0]);
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getCards();
+  }, []);
 
   return (
     <>
@@ -33,13 +59,14 @@ const Details: React.FC<any> = ({ pokemon, show }) => {
         alt="jessie and james"
         width="300"
       />
-      {!show ? (
-        <>
-          <DetailsLayout>
-            <TitleText>Details</TitleText>
+      <DetailsLayout>
+        <TitleText>Details</TitleText>
 
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
             <img src={pokemon?.images?.large} alt="pokemon card" />
-
             <Row>
               <Col lg={6} md={6} xs={12}>
                 <LineWapper>
@@ -82,18 +109,18 @@ const Details: React.FC<any> = ({ pokemon, show }) => {
                 </LineWapper>
               </Col>
             </Row>
-          </DetailsLayout>
-          <Button className="mt-3" onClick={() => detailsModal.open()}>
-            <ButtonText>Attacks details</ButtonText>
-          </Button>
+          </>
+        )}
+      </DetailsLayout>
+      <Button className="mt-3" onClick={() => detailsModal.open()}>
+        <ButtonText>Attacks details</ButtonText>
+      </Button>
 
-          <Link to="/">
-            <Button>
-              <ButtonText>Back to the cards</ButtonText>
-            </Button>
-          </Link>
-        </>
-      ) : null}
+      <Link to="/">
+        <Button>
+          <ButtonText>Back to the cards</ButtonText>
+        </Button>
+      </Link>
     </>
   );
 };
