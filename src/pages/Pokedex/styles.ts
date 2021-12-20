@@ -69,3 +69,13 @@ export const Text = styled.text`
   font-weight: bold;
   font-size: 30px;
 `;
+export const CarouselH = styled.h3`
+  color: #3c5aa6;
+  font-weight: bold;
+  font-size: 30px;
+`;
+export const CarouselP = styled.p`
+  color: #3c5aa6;
+  font-weight: bold;
+  font-size: 30px;
+`;

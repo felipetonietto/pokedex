@@ -17,6 +17,8 @@ import {
   StyledButton,
   TextWrapper,
   Text,
+  CarouselH,
+  CarouselP,
 } from "./styles";
 
 import Details from "../Details/index";
@@ -110,8 +112,9 @@ const Pokedex: React.FC = () => {
         <Button onClick={(event) => getCards(event)} label="GO!"></Button>
       </form>
 
-    
-      {loading ? ( <Loader/>) : mobile ? (
+      {loading ? (
+        <Loader />
+      ) : mobile ? (
         <Carousel className="w-90">
           {pokemon?.data?.length > 0 ? (
             pokemon?.data?.slice(0, 12).map((item: any, index: number) => {
@@ -123,14 +126,16 @@ const Pokedex: React.FC = () => {
                     alt="pokemon card"
                   />
                   <Carousel.Caption>
-                    <h3>{item.name}</h3>
-                    <p>{item.flavorText}</p>
+                    <CarouselH>{item.name}</CarouselH>
+                    <CarouselP>{item.flavorText}</CarouselP>
                   </Carousel.Caption>
                 </Carousel.Item>
               );
             })
           ) : (
-            <h1>oops!</h1>
+            <TextWrapper>
+              <Text>No results for your search!</Text>
+            </TextWrapper>
           )}
         </Carousel>
       ) : (
