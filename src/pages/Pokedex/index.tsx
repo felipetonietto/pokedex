@@ -125,10 +125,6 @@ const Pokedex: React.FC = () => {
                     src={item.images.small}
                     alt="pokemon card"
                   />
-                  <Carousel.Caption>
-                    <CarouselH>{item.name}</CarouselH>
-                    <CarouselP>{item.flavorText}</CarouselP>
-                  </Carousel.Caption>
                 </Carousel.Item>
               );
             })
