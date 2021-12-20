@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 
 import useModal from "../../hooks/useModal";
 
-import { Row } from "react-bootstrap";
-
 import Modal from "./DetailsModal/index";
 import { Button, TitleText, LineWapper, Name, Info } from "./styles";
 

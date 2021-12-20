@@ -7,9 +7,17 @@ import api from "../../services/api";
 
 import { Carousel } from "react-bootstrap";
 
+import "../../App.css";
+
 // import { PokemonProvider } from "../context";
 
-import { CardsContainer, Input, StyledButton } from "./styles";
+import {
+  CardsContainer,
+  Input,
+  StyledButton,
+  TextWrapper,
+  Text,
+} from "./styles";
 
 import Details from "../Details/index";
 
@@ -19,6 +27,7 @@ import Details from "../Details/index";
 
 import Card from "../../components/Card/Card";
 import Button from "../../components/Button/Button";
+import Loader from "../../components/Loader/Loader";
 // import repositories from "../../store/ducks/repositories";
 // import {Repository} from "../../store/ducks/repositories/types";
 // import * as RepositoriesActions from "../../store/ducks/repositories/actions";
@@ -39,7 +48,6 @@ import Button from "../../components/Button/Button";
 
 const Pokedex: React.FC = () => {
   const [pokemon, setPokemon]: any[] = useState({});
-  const [errors, setErrors] = useState({});
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState("pikachu");
   const [loading, setLoading] = useState(false);
@@ -53,6 +61,7 @@ const Pokedex: React.FC = () => {
 
   async function getCards(event: any = null) {
     event && event.preventDefault();
+    setLoading(true);
     try {
       if (!search || search === "") {
         const { data } = await api.get(`/cards`);
@@ -61,8 +70,11 @@ const Pokedex: React.FC = () => {
         const { data } = await api.get(`/cards?q=name:${search}*&orderBy=name`);
         setPokemon(data);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -71,24 +83,35 @@ const Pokedex: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-      setMobile(true)
-     }
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      setMobile(true);
+    }
   }, []);
 
   return (
     <>
+      <img
+        src="https://media.karousell.com/media/photos/products/2017/03/11/pokemon_trainer_ash_ketchum_outfit_1489214029_7ac5b4b8.jpg"
+        alt="you're on it!"
+        width="300"
+        className="mb-3"
+      ></img>
       <form>
         <Input
           onChange={({ target }) => {
             setSearch(target.value);
           }}
-          placeholder="find the pokemon"
+          placeholder="type the name to search"
         />
         <Button onClick={(event) => getCards(event)} label="GO!"></Button>
       </form>
 
-      {mobile ? (
+    
+      {loading ? ( <Loader/>) : mobile ? (
         <Carousel className="w-90">
           {pokemon?.data?.length > 0 ? (
             pokemon?.data?.slice(0, 12).map((item: any, index: number) => {
@@ -96,13 +119,12 @@ const Pokedex: React.FC = () => {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src={item.images.small} alt="pokemon card" 
+                    src={item.images.small}
+                    alt="pokemon card"
                   />
                   <Carousel.Caption>
                     <h3>{item.name}</h3>
-                    <p>
-                     {item.flavorText}
-                    </p>
+                    <p>{item.flavorText}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               );
@@ -122,14 +144,18 @@ const Pokedex: React.FC = () => {
                     <img src={item.images.small} alt="pokemon card" />
                     <h3>{item.types}</h3>
                     <Link to="/details">
-                      <StyledButton onClick={() => setShow(true)}>Details</StyledButton>
+                      <StyledButton onClick={() => setShow(true)}>
+                        Details
+                      </StyledButton>
                     </Link>
                   </Card>
                 </div>
               );
             })
           ) : (
-            <h1>No results for your search!</h1>
+            <TextWrapper>
+              <Text>No results for your search!</Text>
+            </TextWrapper>
           )}
         </CardsContainer>
       )}
