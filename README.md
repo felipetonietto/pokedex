@@ -1,44 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Number Guessing
 
-## Available Scripts
+A simple application developed with React, Typescript, Styled Components, Bootstrap, consuming the API indicated in the challenge.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Ília Frontend Challenge](#ília-frontend-challenge)
+- [Getting Started](#getting-started)
+- [Discussion](#discussion)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Ília Frontend Challenge
 
-### `npm test`
+First, thanks for the opportunity. I am very happy to be able to participate in a selection in such a well-known and recognized company.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- You can access the deployed version: https://pokedex-709c7.web.app/
+- Please clone the repository.
+- Please run `npm i` followed by `npm start` to make sure everything is working as expected!
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Discussion
 
-### `npm run eject`
+Some of the requirements were not met. I thought the time was too short, considering that I have other activities. I couldn't configure Redux in time, I had never developed this part of Redux with Typescript, so I ran into several barriers. But I left the code commented with what I was trying to do.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The style issue was in the background, as I spent a lot of time trying to tweak Redux. I was sad about that too, because it got really ugly and I didn't even have time to think about something or look somewhere for inspiration. It was practically without styles.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Anyway, I enjoyed trying to make Redux work with Typescript, despite not being successful. My idea was to store the search and access it in the other components.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+The folder structure wasn't ideal either, and I didn't have enough time to identify which components could be scalable, which I could effectively turn into components in the Components folder.
