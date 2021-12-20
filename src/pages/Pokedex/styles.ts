@@ -11,8 +11,6 @@ export const CardsContainer = styled.div`
 
 export const TextWrapper = styled.div`
   display: flex;
-  /* margin-bottom: 10px;
-  margin-left: 10px; */
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
@@ -68,6 +66,7 @@ export const Text = styled.text`
   color: #3c5aa6;
   font-weight: bold;
   font-size: 30px;
+  margin-left: 50px;
 `;
 export const CarouselH = styled.h3`
   color: #3c5aa6;
