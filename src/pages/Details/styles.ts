@@ -53,7 +53,7 @@ export const TitleText = styled.h1`
 
 export const ButtonText = styled.text`
   color: #3c5aa6;
-  weight: 700;
+  font-weight: 700;
   /* font-size: calc(40px + 2vmin); */
 `;
 

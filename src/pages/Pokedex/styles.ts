@@ -81,6 +81,6 @@ export const CarouselP = styled.p`
 
 export const ButtonText = styled.text`
   color: #3c5aa6;
-  weight: 700;
+  font-weight: 600;
   /* font-size: calc(40px + 2vmin); */
 `;
